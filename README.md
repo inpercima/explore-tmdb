@@ -2,15 +2,22 @@
 
 [![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.md)
 
-This project was generated with [swaaplate](https://github.com/inpercima/swaaplate) version 0.3.3-SNAPSHOT.
-
 A simple web app allowing users to search on The Movie Database (TMDb) by using the api.
+
+A demo version is online under [explore-tmdb.inpercima.net](http://explore-tmdb.inpercima.net).
+
+This project was generated with [swaaplate](https://github.com/inpercima/swaaplate) version 0.3.3-SNAPSHOT.
 
 ## Prerequisites
 
 ### Angular CLI
 
 * `angular-cli 7.3.8` or higher
+
+### Apache and php
+
+* `Apache 2.4` or higher
+* `php 7.3` or higher
 
 ### Node, npm or yarn
 

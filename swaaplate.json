@@ -1,0 +1,48 @@
+{
+  "generalConfig": {
+    "buildWebDir": "dist",
+    "github": {
+      "use": true,
+      "username": "inpercima"
+    },
+    "installDependencies": true,
+    "selectorPrefix": "etmdb",
+    "theme": "indigo-pink",
+    "title": "explore TMDb",
+    "useYarn": true
+  },
+  "packageJsonConfig": {
+    "author": "Marcel Jänicke",
+    "contributors": [{
+      "name": "Marcel Jänicke",
+      "email": "inpercima@gmail.com"
+    }],
+    "description": "A simple web app allowing users to search on The Movie Database (TMDb) by using the api.",
+    "homepage": "http://explore-tmdb.inpercima.net",
+    "name": "explore-tmdb",
+    "repository": "https://github.com/inpercima/explore-tmdb"
+  },
+  "routeConfig": {
+    "default": "dashboard",
+    "features": {
+      "show": true
+    },
+    "login": {
+      "activate": false,
+      "name": "login",
+      "show": false
+    },
+    "notFound": {
+      "name": "not-found",
+      "redirect": false
+    }
+  },
+  "serverConfig": {
+    "endpoint": "php",
+    "htaccess": true,
+    "management": "",
+    "packagePath": "",
+    "separateReadme": true,
+    "serverAsApi": true
+  }
+}

@@ -3,7 +3,6 @@
 environment.dev.ts
 environment.mock.ts
 environment.prod.ts
-swaaplate-backup.json
 dist/
 
 # end project specific

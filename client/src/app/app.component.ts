@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { Routes } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
@@ -17,6 +17,8 @@ export class AppComponent {
   public routes: Routes;
 
   public appname: string;
+
+  @HostBinding('class') class = `${environment.theme}-theme`;
 
   public constructor(private titleService: Title) {
     this.appname = environment.appname;

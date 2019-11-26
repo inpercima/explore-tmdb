@@ -6,24 +6,29 @@ A simple web app allowing users to search on The Movie Database (TMDb) by using 
 
 A demo version is online under [explore-tmdb.inpercima.net](http://explore-tmdb.inpercima.net).
 
-This project was generated with [swaaplate](https://github.com/inpercima/swaaplate) version 0.5.0-SNAPSHOT.
+This project was generated with [swaaplate](https://github.com/inpercima/swaaplate) version 0.5.0.
 
 ## Prerequisites
 
 ### Angular CLI
 
-* `angular-cli 8.2.0` or higher
+* `angular-cli 8.3.18` or higher
 
 ### Apache and php
 
 * `Apache 2.4` or higher
 * `php 7.3` or higher
 
+### Docker
+
+* `docker 17.05.0-ce` or higher
+* `docker-compose 1.9` or higher
+
 ### Node, npm or yarn
 
 * `node 12.3.1` or higher in combination with
-  * `npm 6.9.0` or higher or
-  * `yarn 1.16.0` or higher, used in this repository
+  * `npm 6.12.1` or higher or
+  * `yarn 1.19.1` or higher, used in this repository
 
 ## Dependency check
 
@@ -31,7 +36,11 @@ Some libraries could not be updated b/c of peer dependencies or knowing issues.
 
 | library    | current version | wanted version | reason |
 | ---------- | --------------- | -------------- | ------ |
-| zone.js    | 0.9.1           | 0.10.0         | @angular/core@8.2.0" has incorrect peer dependency "zone.js@~0.9.1" |
+| copy-webpack-plugin | 4.6.0 | 5.0.3 | copy-webpack-plugin@5.0.3" has unmet peer dependency "webpack@^4.0.0" |
+| zone.js    | 0.9.1           | 0.10.2         | @angular/core@8.2.13" has incorrect peer dependency "zone.js@~0.9.1" |
+| typescript | 3.5.3           | 3.6.4          | @angular-devkit/build-angular@0.803.17" has incorrect peer dependency "typescript@>=3.1 < 3.6 |
+| typescript | 3.5.3           | 3.6.4          | @angular-devkit/build-angular > @ngtools/webpack@8.3.17" has incorrect peer dependency "typescript@>=3.4 < 3.6 |
+| typescript | 3.5.3           | 3.6.4          | @angular/compiler-cli@8.2.13" has incorrect peer dependency "typescript@>=3.4 <3.6 |
 
 ## Getting started
 
@@ -42,6 +51,8 @@ cd explore-tmdb
 ```
 
 ## Usage
+
+### Modules
 
 For the client check [explore-tmdb - client](https://github.com/inpercima/explore-tmdb/tree/master/client).
 

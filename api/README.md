@@ -1,4 +1,4 @@
-# swaaplate - api
+# explore-tmdb - api
 
 ## Getting started
 

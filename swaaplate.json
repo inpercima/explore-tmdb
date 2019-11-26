@@ -1,5 +1,5 @@
 {
-  "generalConfig": {
+  "general": {
     "buildWebDir": "dist",
     "github": {
       "use": true,
@@ -9,9 +9,10 @@
     "selectorPrefix": "etmdb",
     "theme": "indigo-pink",
     "title": "explore TMDb",
+    "useDocker": true,
     "useYarn": true
   },
-  "packageJsonConfig": {
+  "packageJson": {
     "author": "Marcel Jänicke",
     "contributors": [{
       "name": "Marcel Jänicke",
@@ -22,7 +23,7 @@
     "name": "explore-tmdb",
     "repository": "https://github.com/inpercima/explore-tmdb"
   },
-  "routeConfig": {
+  "route": {
     "default": "dashboard",
     "features": {
       "show": true
@@ -37,12 +38,11 @@
       "redirect": false
     }
   },
-  "serverConfig": {
-    "endpoint": "php",
+  "server": {
+    "backend": "php",
     "htaccess": true,
     "management": "",
     "packagePath": "",
-    "separateReadme": true,
     "serverAsApi": true
   }
 }

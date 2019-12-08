@@ -5,8 +5,11 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class RequestService {
 
-  public url(url: string): string {
-    return `${environment.api}${url}${environment.apiSuffix}`;
+  public url(url: string, parameters?: string): string {
+    if (!parameters) {
+      parameters = '';
+    }
+    return `${environment.api}${url}${environment.apiSuffix}${parameters}`;
   }
 
 }

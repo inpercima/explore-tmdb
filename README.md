@@ -6,13 +6,13 @@ A simple web app allowing users to search on The Movie Database (TMDb) by using 
 
 A demo version is online under [explore-tmdb.inpercima.net](http://explore-tmdb.inpercima.net).
 
-This project was generated with [swaaplate](https://github.com/inpercima/swaaplate) version 0.5.0.
+This project was generated with [swaaplate](https://github.com/inpercima/swaaplate) version 1.0.1.
 
 ## Prerequisites
 
 ### Angular CLI
 
-* `angular-cli 8.3.18` or higher
+* `angular-cli 8.3.20` or higher
 
 ### Apache and php
 
@@ -21,8 +21,8 @@ This project was generated with [swaaplate](https://github.com/inpercima/swaapla
 
 ### Docker
 
-* `docker 17.05.0-ce` or higher
-* `docker-compose 1.9` or higher
+* `docker 19.03.5` or higher
+* `docker-compose 1.25.0` or higher
 
 ### Node, npm or yarn
 
@@ -37,10 +37,10 @@ Some libraries could not be updated b/c of peer dependencies or knowing issues.
 | library    | current version | wanted version | reason |
 | ---------- | --------------- | -------------- | ------ |
 | copy-webpack-plugin | 4.6.0 | 5.0.3 | copy-webpack-plugin@5.0.3" has unmet peer dependency "webpack@^4.0.0" |
-| zone.js    | 0.9.1           | 0.10.2         | @angular/core@8.2.13" has incorrect peer dependency "zone.js@~0.9.1" |
-| typescript | 3.5.3           | 3.6.4          | @angular-devkit/build-angular@0.803.17" has incorrect peer dependency "typescript@>=3.1 < 3.6 |
-| typescript | 3.5.3           | 3.6.4          | @angular-devkit/build-angular > @ngtools/webpack@8.3.17" has incorrect peer dependency "typescript@>=3.4 < 3.6 |
-| typescript | 3.5.3           | 3.6.4          | @angular/compiler-cli@8.2.13" has incorrect peer dependency "typescript@>=3.4 <3.6 |
+| zone.js    | 0.9.1           | 0.10.2         | @angular/core@8.2.14" has incorrect peer dependency "zone.js@~0.9.1" |
+| typescript | 3.5.3           | 3.7.2          | @angular-devkit/build-angular@0.803.20" has incorrect peer dependency "typescript@>=3.1 < 3.6 |
+| typescript | 3.5.3           | 3.7.2          | @angular-devkit/build-angular > @ngtools/webpack@8.3.20" has incorrect peer dependency "typescript@>=3.4 < 3.6 |
+| typescript | 3.5.3           | 3.7.2          | @angular/compiler-cli@8.2.14" has incorrect peer dependency "typescript@>=3.4 <3.6 |
 
 ## Getting started
 

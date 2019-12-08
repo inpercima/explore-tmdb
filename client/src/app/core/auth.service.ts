@@ -5,7 +5,6 @@ import { FormGroup } from '@angular/forms';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { map } from 'rxjs/operators';
 
-import { environment } from '../../environments/environment';
 import { RequestService } from './request.service';
 
 @Injectable()

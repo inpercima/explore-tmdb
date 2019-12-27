@@ -6,7 +6,7 @@ A simple web app allowing users to search on The Movie Database (TMDb) by using 
 
 A demo version is online under [explore-tmdb.inpercima.net](http://explore-tmdb.inpercima.net).
 
-This project was generated with [swaaplate](https://github.com/inpercima/swaaplate) version 1.0.1.
+This project was generated with [swaaplate](https://github.com/inpercima/swaaplate) version 1.1.0.
 
 ## Prerequisites
 
@@ -36,10 +36,10 @@ Some libraries could not be updated b/c of peer dependencies or knowing issues.
 
 | library    | current version | wanted version | reason |
 | ---------- | --------------- | -------------- | ------ |
-| copy-webpack-plugin | 4.6.0 | 5.0.3 | copy-webpack-plugin@5.0.3" has unmet peer dependency "webpack@^4.0.0" |
+| copy-webpack-plugin | 4.6.0 | 5.1.1 | copy-webpack-plugin@5.1.1" has unmet peer dependency "webpack@^4.0.0 \|\| ^5.0.0" |
 | zone.js    | 0.9.1           | 0.10.2         | @angular/core@8.2.14" has incorrect peer dependency "zone.js@~0.9.1" |
-| typescript | 3.5.3           | 3.7.2          | @angular-devkit/build-angular@0.803.20" has incorrect peer dependency "typescript@>=3.1 < 3.6 |
-| typescript | 3.5.3           | 3.7.2          | @angular-devkit/build-angular > @ngtools/webpack@8.3.20" has incorrect peer dependency "typescript@>=3.4 < 3.6 |
+| typescript | 3.5.3           | 3.7.2          | @angular-devkit/build-angular@0.803.21" has incorrect peer dependency "typescript@>=3.1 < 3.6 |
+| typescript | 3.5.3           | 3.7.2          | @angular-devkit/build-angular > @ngtools/webpack@8.3.21" has incorrect peer dependency "typescript@>=3.4 < 3.6 |
 | typescript | 3.5.3           | 3.7.2          | @angular/compiler-cli@8.2.14" has incorrect peer dependency "typescript@>=3.4 <3.6 |
 
 ## Getting started

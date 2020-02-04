@@ -12,7 +12,7 @@ This project was generated with [swaaplate](https://github.com/inpercima/swaapla
 
 ### Angular CLI
 
-* `angular-cli 8.3.20` or higher
+* `angular-cli 8.3.24` or higher
 
 ### Apache and php
 
@@ -38,9 +38,9 @@ Some libraries could not be updated b/c of peer dependencies or knowing issues.
 | ---------- | --------------- | -------------- | ------ |
 | copy-webpack-plugin | 4.6.0 | 5.1.1 | copy-webpack-plugin@5.1.1" has unmet peer dependency "webpack@^4.0.0 \|\| ^5.0.0" |
 | zone.js    | 0.9.1           | 0.10.2         | @angular/core@8.2.14" has incorrect peer dependency "zone.js@~0.9.1" |
-| typescript | 3.5.3           | 3.7.2          | @angular-devkit/build-angular@0.803.21" has incorrect peer dependency "typescript@>=3.1 < 3.6 |
-| typescript | 3.5.3           | 3.7.2          | @angular-devkit/build-angular > @ngtools/webpack@8.3.21" has incorrect peer dependency "typescript@>=3.4 < 3.6 |
-| typescript | 3.5.3           | 3.7.2          | @angular/compiler-cli@8.2.14" has incorrect peer dependency "typescript@>=3.4 <3.6 |
+| typescript | 3.5.3           | 3.7.5          | @angular-devkit/build-angular@0.803.24" has incorrect peer dependency "typescript@>=3.1 < 3.6 |
+| typescript | 3.5.3           | 3.7.5          | @angular-devkit/build-angular > @ngtools/webpack@8.3.24" has incorrect peer dependency "typescript@>=3.4 < 3.6 |
+| typescript | 3.5.3           | 3.7.5          | @angular/compiler-cli@8.2.14" has incorrect peer dependency "typescript@>=3.4 <3.6 |
 
 ## Getting started
 

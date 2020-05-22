@@ -1,4 +1,4 @@
-# explore-tmdb - api
+# explore TMDb - api
 
 ## Getting started
 

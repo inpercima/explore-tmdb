@@ -9,7 +9,7 @@ export const environment = {
   appname: 'explore TMDb',
   defaultRoute: 'dashboard',
   production: false,
-  redirectNotFound: false,
+  redirectNotFound: true,
   showFeatures: true,
   showLogin: false,
   theme: 'indigo-pink',

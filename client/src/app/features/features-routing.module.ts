@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuard } from '../core/auth-guard.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -12,12 +12,8 @@ const routes: Routes = [{
 }];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(routes),
-  ],
-  exports: [
-    RouterModule,
-  ],
+  imports: [ RouterModule.forChild(routes) ],
+  exports: [ RouterModule ]
 })
 export class FeaturesRoutingModule {
 

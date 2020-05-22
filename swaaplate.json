@@ -1,18 +1,9 @@
 {
-  "general": {
-    "author": "Marcel Jänicke",
-    "description": "A simple web app allowing users to search on The Movie Database (TMDb) by using the api.",
-    "github": {
-      "use": true,
-      "username": "inpercima"
-    },
-    "name": "explore-tmdb",
-    "title": "explore TMDb",
-    "useDocker": true
-  },
   "client": {
     "buildDir": "dist",
+    "ghUser": "inpercima",
     "installDependencies": true,
+    "language": "en",
     "packageJson": {
       "contributors": [{
         "name": "Marcel Jänicke",
@@ -21,24 +12,38 @@
       "homepage": "http://explore-tmdb.inpercima.net",
       "repository": "https://github.com/inpercima/explore-tmdb"
     },
-    "route": {
+    "prefix": "etmdb",
+    "routing": {
+      "enabled": true,
       "features": {
         "default": "dashboard",
+        "name": "features",
         "show": true
       },
       "login": {
         "activate": false,
+        "enabled": true,
         "name": "login",
         "show": false
       },
       "notFound": {
+        "enabled": true,
         "name": "not-found",
-        "redirect": false
+        "redirect": true
       }
     },
-    "selectorPrefix": "etmdb",
     "theme": "indigo-pink",
+    "useGoogleFonts": true,
     "useYarn": true
+  },
+  "general": {
+    "author": "Marcel Jänicke",
+    "description": "A simple web app allowing users to search on The Movie Database (TMDb) by using the api.",
+    "name": "explore-tmdb",
+    "title": "explore TMDb",
+    "useDocker": true,
+    "useMITLicense": true,
+    "useMock": false
   },
   "server": {
     "backend": "php",

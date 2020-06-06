@@ -10,7 +10,7 @@ This project was generated with [swaaplate](https://github.com/inpercima/swaapla
 
 ### Angular CLI
 
-* `angular-cli 9.1.6` or higher
+* `angular-cli 9.1.7` or higher
 
 ### Docker
 
@@ -27,9 +27,11 @@ This project was generated with [swaaplate](https://github.com/inpercima/swaapla
 
 Some libraries could not be updated b/c of peer dependencies or knowing issues.
 
-| library    | current version | wanted version | reason |
-| ---------- | --------------- | -------------- | ------ |
-| copy-webpack-plugin | 4.6.0 | 5.1.1 | "copy-webpack-plugin@5.1.1" has unmet peer dependency "webpack@^4.0.0" |
+| library             | current version | wanted version | reason |
+| --------------------| --------------- | -------------- | ------ |
+| copy-webpack-plugin | 4.6.0           | 6.0.2          | "copy-webpack-plugin@6.0.2" has unmet peer dependency "webpack@^4.37.0 || ^5.0.0" |
+| tslib               | 1.13.0          | 2.0.0          | "@angular/core@9.1.9" has incorrect peer dependency "tslib@^1.10.0" |
+| typescript          | 3.8.3           | 3.9.5          | "@angular/compiler-cli@9.1.9" has incorrect peer dependency "typescript@>=3.6 <3.9" |
 
 ## Getting started
 

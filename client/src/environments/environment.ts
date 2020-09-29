@@ -3,15 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  activateLogin: false,
   api: './api/',
   apiSuffix: '',
   appname: 'explore TMDb',
   defaultRoute: 'dashboard',
   production: false,
-  redirectNotFound: true,
-  showFeatures: true,
-  showLogin: false,
   theme: 'indigo-pink',
 };
 

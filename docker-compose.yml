@@ -1,7 +1,0 @@
-version: '2'
-services:
-  explore-tmdb:
-    build: .
-    image: explore-tmdb:latest
-    mem_limit: 256mb
-    restart: unless-stopped

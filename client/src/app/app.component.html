@@ -4,10 +4,10 @@
   </mat-toolbar>
   <nav mat-tab-nav-bar>
     <a mat-tab-link
-       *ngFor="let routeLink of routes | appRouting"
-       [routerLink]="routeLink.path"
-       routerLinkActive #rla="routerLinkActive"
-       [active]="rla.isActive">
+      *ngFor="let routeLink of routes | appRouting"
+      [routerLink]="routeLink.path"
+      routerLinkActive #rla="routerLinkActive"
+      [active]="rla.isActive">
       {{ routeLink.path }}
     </a>
   </nav>

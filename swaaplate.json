@@ -11,10 +11,10 @@
         "name": "features"
       },
       "notFound": {
-        "enabled": true,
+        "enabled": false,
         "name": "not-found"
       },
-      "routing": true
+      "routing": false
     },
     "packageJson": {
       "contributors": [{
@@ -32,7 +32,7 @@
   "general": {
     "author": "Marcel Jänicke",
     "description": "A simple web app allowing users to search on The Movie Database (TMDb) by using the api.",
-    "modRewriteIndex": false,
+    "modRewriteIndex": true,
     "name": "explore-tmdb",
     "title": "explore TMDb",
     "useDocker": false,
@@ -43,7 +43,7 @@
   "server": {
     "backend": "php",
     "javaKt": {
-      "management": "maven",
+      "management": "",
       "packagePath": ""
     },
     "php": {

@@ -80,14 +80,14 @@ Change for prodMode the option `production` to `true`.
 
 Defines the URL to the backend.
 
-* default: `./`
+* default: `./api/`
 * type: `string`
 
 ### `apiSuffix`
 
 Defines a suffix for the api to the backend.
 
-* default: `.php`
+* default: EMPTY
 * type: `string`
 
 ### `appname`

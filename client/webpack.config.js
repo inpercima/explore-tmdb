@@ -8,6 +8,7 @@ module.exports = (config, options) => {
     new CopyWebpackPlugin([{
       from: '../api/src/main',
       to: './api',
+      ignore: ['config.default.php']
     }])
   );
   return config;

@@ -30,7 +30,12 @@ class ListsService {
     $response = file_get_contents("https://api.themoviedb.org/4/list/$listId?api_key=$apiKey&page=$page");
     $data = json_decode($response);
     foreach($data->results as $key => $value) {
-      array_push($this->movies, $value->media_type == 'tv' ? $value->name : $value->title);
+      $mediaType = $value->media_type;
+      $title = $mediaType == 'tv' ? $value->name : $value->title;
+      $commentId = "$mediaType:$value->id";
+      $comment = $data->comments->$commentId;
+      $comment = $comment == null ? '' : $comment;
+      array_push($this->movies, (object) [ 'title' => $title, 'comment' => $comment ]);
     }
     return $data;
   }

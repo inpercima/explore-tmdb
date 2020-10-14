@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { Observable, of } from 'rxjs';
-import { debounceTime, filter, distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
+import { debounceTime, filter, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
+import { Movie } from './movie.model';
 import { MovieService } from './movie.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'etmdb-dashboard',
@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
 
   filterForm: FormGroup;
 
-  movies: string[];
+  movies: Movie[];
   movies$: Observable<string[]>;
 
   lists = [{
@@ -42,16 +42,16 @@ export class DashboardComponent implements OnInit {
       switchMap(term => term ? of(this.filter(term)) : of([])),
     );
 
-    this.filterForm.get('list').valueChanges.subscribe(value => {
+    this.filterForm.get('list').valueChanges.subscribe(listId => {
       this.loading = true;
-      this.movieService.list(value).subscribe(movies => {
+      this.movieService.list(listId).subscribe(movies => {
         this.movies = movies;
         this.loading = false;
       });
     });
   }
 
-  filter(term: string): string[] {
-    return this.movies.filter(movie => movie != null && movie.toLowerCase().includes(term.toLowerCase()));
+  filter(term: string): Movie[] {
+    return this.movies.filter(movie => movie != null && movie.title.toLowerCase().includes(term.toLowerCase()));
   }
 }

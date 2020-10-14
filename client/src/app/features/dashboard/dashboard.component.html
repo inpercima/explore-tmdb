@@ -24,7 +24,9 @@
         </mat-form-field>
         <ng-container *ngIf="movies$ | async as movies">
           <mat-list fxFlex>
-            <mat-list-item *ngFor="let movie of movies">{{ movie }}</mat-list-item>
+            <mat-list-item *ngFor="let movie of movies">
+              {{ movie.title }}<span *ngIf="movie.comment">&nbsp;({{ movie.comment }})</span>
+            </mat-list-item>
           </mat-list>
         </ng-container>
       </form>

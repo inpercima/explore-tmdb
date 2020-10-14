@@ -30,7 +30,7 @@ class ListsService {
     $response = file_get_contents("https://api.themoviedb.org/4/list/$listId?api_key=$apiKey&page=$page");
     $data = json_decode($response);
     foreach($data->results as $key => $value) {
-      array_push($this->movies, $value->title);
+      array_push($this->movies, $value->media_type == 'tv' ? $value->name : $value->title);
     }
     return $data;
   }

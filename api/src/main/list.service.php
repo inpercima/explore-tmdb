@@ -13,9 +13,7 @@ class ListsService {
   /**
    * List all movies from a public list in themoviedb.
    */
-  public function listAll($query) {
-    parse_str($query, $queryArr);
-    $listId = $queryArr['listId'];
+  public function listAll($listId) {
     $page = 1;
     $data = $this->request($listId, $page);
     $totalPages = $data->total_pages;
@@ -35,7 +33,7 @@ class ListsService {
       $commentId = "$mediaType:$value->id";
       $comment = $data->comments->$commentId;
       $comment = $comment == null ? '' : $comment;
-      array_push($this->movies, (object) [ 'title' => $title, 'comment' => $comment ]);
+      array_push($this->movies, (object) [ 'title' => $title, 'comment' => nl2br($comment) ]);
     }
     return $data;
   }

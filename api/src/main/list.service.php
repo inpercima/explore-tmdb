@@ -1,5 +1,6 @@
 <?php
-require_once 'config.php';
+$mode = strpos($_SERVER['SERVER_NAME'], 'localhost') ? 'dev' : 'prod';
+require_once "config.${mode}.php";
 
 class ListsService {
 

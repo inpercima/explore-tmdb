@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import { Observable, of } from 'rxjs';
+import { EMPTY, Observable, of } from 'rxjs';
 import { debounceTime, filter, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 import { Movie } from './movie.model';
@@ -15,10 +15,10 @@ export class DashboardComponent implements OnInit {
 
   loading = false;
 
-  filterForm: FormGroup;
+  filterForm!: FormGroup;
 
-  movies: Movie[];
-  movies$: Observable<string[]>;
+  movies: Movie[] = [];
+  movies$: Observable<Movie[]> = EMPTY;
 
   lists = [{
     id: 13628,
@@ -35,14 +35,14 @@ export class DashboardComponent implements OnInit {
       list: [''],
       filter: [''],
     });
-    this.movies$ = this.filterForm.get('filter').valueChanges.pipe(
+    this.movies$ = this.filterForm.get('filter')?.valueChanges.pipe(
       debounceTime(1000),
       filter(term => term.length >= 3 || !term.length),
       distinctUntilChanged(),
-      switchMap(term => term ? of(this.filter(term)) : of([])),
-    );
+      switchMap(term => term ? of(this.filter(term)) : EMPTY),
+    ) ?? EMPTY;
 
-    this.filterForm.get('list').valueChanges.subscribe(listId => {
+    this.filterForm.get('list')?.valueChanges.subscribe(listId => {
       this.loading = true;
       this.movieService.list(listId).subscribe(movies => {
         this.movies = movies;
@@ -52,6 +52,6 @@ export class DashboardComponent implements OnInit {
   }
 
   filter(term: string): Movie[] {
-    return this.movies.filter(movie => movie != null && movie.title.toLowerCase().includes(term.toLowerCase()));
+    return this.movies.filter(movie => movie?.title.toLowerCase().includes(term.toLowerCase()));
   }
 }

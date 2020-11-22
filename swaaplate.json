@@ -12,7 +12,7 @@
       },
       "notFound": {
         "enabled": false,
-        "name": "not-found"
+        "name": ""
       },
       "routing": false
     },
@@ -21,8 +21,8 @@
         "name": "Marcel Jänicke",
         "email": "inpercima@gmail.com"
       }],
-      "homepage": "http://explore-tmdb.inpercima.net",
-      "repository": "https://github.com/inpercima/explore-tmdb"
+      "homepage": "http://explore-tmdb.inpercima.net/",
+      "repository": "https://github.com/inpercima/explore-tmdb/"
     },
     "prefix": "etmdb",
     "theme": "indigo-pink",

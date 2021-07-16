@@ -7,10 +7,11 @@
 cd api
 ```
 
-Create config file.
+Create config files for `devMode` and `prodMode`.
 
 ```bash
-cp src/main/config.default.php src/main/config.php
+cp config/config.default.php config/config.dev.php
+cp config/config.default.php config/config.prod.php
 ```
 
 **Note**: This file will not be under version control but listed in .gitignore.

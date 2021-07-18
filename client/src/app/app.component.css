@@ -4,6 +4,15 @@ body {
   overflow-y: scroll;
 }
 
-.mat-card {
+.mat-card, .mat-progress-bar {
   margin-top: 20px;
+}
+
+.mat-card-header-text {
+  margin-left: 0 !important;
+}
+
+.mat-list-base .mat-list-item {
+  min-height: 72px;
+  height: max-content !important;
 }

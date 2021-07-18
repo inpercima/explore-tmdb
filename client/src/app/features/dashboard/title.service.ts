@@ -3,18 +3,18 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { Movie } from './movie.model';
+import { Title } from './title.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MovieService {
+export class TitleService {
 
   constructor(private http: HttpClient) { }
 
-  public list(listId: string): Observable<Movie[]> {
-    return this.http.get<Movie[]>(environment.api + 'list', {
+  public list(listId: string): Observable<Title[]> {
+    return this.http.get<Title[]>(environment.api + 'list', {
       params: { listId },
     });
   }

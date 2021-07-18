@@ -4,6 +4,8 @@
 
 A simple web app allowing users to search on The Movie Database (TMDb) by using the api.
 
+This app is online under [explore-tmdb.inpercima.net](http://explore-tmdb.inpercima.net).
+
 This project was generated with [swaaplate](https://github.com/inpercima/swaaplate) version 2.3.1.
 
 ## Prerequisites
@@ -30,7 +32,7 @@ Some libraries could not be updated b/c of peer dependencies or knowing issues.
 | library    | current version | last version | reason |
 | ---------- | --------------- | ------------ | ------ |
 | rxjs       | 6.6.0           | 7.2.0        | "@angular/common@12.1.1" has incorrect peer dependency "rxjs@^6.5.3" |
-| copy-webpack-plugin          | 9.0.0        | 9.0.0  | "copy-webpack-plugin@9.0.0" has unmet peer dependency "webpack@^5.1.0 |
+| copy-webpack-plugin          | 9.0.1        | 9.0.1  | "copy-webpack-plugin@9.0.1" has unmet peer dependency "webpack@^5.1.0 |
 
 ## Getting started
 

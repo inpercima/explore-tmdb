@@ -1,35 +1,45 @@
 <div fxLayout="row" fxLayoutAlign="center">
-  <mat-card fxFlex="60" *ngIf="loading">
-    <mat-card-content class="progress">
-      <mat-progress-bar color="primary" mode="indeterminate" value="50"></mat-progress-bar>
-    </mat-card-content>
-  </mat-card>
-  <mat-card fxFlex="60" *ngIf="!loading">
+  <mat-card fxFlex="60">
     <mat-card-header>
-      <mat-card-title>
-        Movies from inpercima at themoviedb
-      </mat-card-title>
+      <mat-card-title>Options and run</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form [formGroup]="filterForm" fxLayout="column">
+      <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
+        <div fxLayout="row">
+          <mat-form-field fxFlex>
+            <input type="text" placeholder="Choose one predefined list ID or use your ID" matInput formControlName="listId" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions$ | async" [value]="option.id">
+                {{ option.title }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <button fxFlex mat-raised-button color="primary">RUN/UPDATE</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div fxLayout="row" fxLayoutAlign="center">
+  <mat-card fxFlex="60" *ngIf="appRunning">
+    <mat-card-content>
+      <form *ngIf="titles" [formGroup]="filterForm" fxLayout="column">
         <mat-form-field fxFlex>
-          <mat-select placeholder="Choose a list" formControlName="list">
-            <mat-option *ngFor="let list of lists" [value]="list.id">
-              {{ list.title }}
-            </mat-option>
-          </mat-select>
+          <input matInput placeholder="Filter titles" formControlName="filter">
         </mat-form-field>
-        <mat-form-field fxFlex>
-          <input matInput placeholder="Filter movies" formControlName="filter">
-        </mat-form-field>
-        <ng-container *ngIf="movies$ | async as movies">
+        <ng-container *ngIf="titles$ | async as titles">
           <mat-list fxFlex>
-            <mat-list-item *ngFor="let movie of movies">
-              {{ movie.title }}<span *ngIf="movie.comment">&nbsp;({{ movie.comment }})</span>
+            <mat-list-item *ngFor="let title of titles">
+              <mat-icon mat-list-icon>movie</mat-icon>
+              <div mat-line>{{ title.title }}</div>
+              <div mat-line [innerHTML]="title.comment"></div>
             </mat-list-item>
           </mat-list>
         </ng-container>
       </form>
+      <mat-progress-bar *ngIf="!titles" color="primary" mode="indeterminate" value="50"></mat-progress-bar>
     </mat-card-content>
   </mat-card>
 </div>

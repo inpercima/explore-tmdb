@@ -1,6 +1,4 @@
-export interface Title {
-
-  id: string;
+export interface Item {
 
   title: string;
 

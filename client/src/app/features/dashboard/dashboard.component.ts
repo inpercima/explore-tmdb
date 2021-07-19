@@ -4,8 +4,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable, of, empty } from 'rxjs';
 import { debounceTime, filter, distinctUntilChanged, switchMap, startWith, map } from 'rxjs/operators';
 
-import { Title } from './title.model';
-import { TitleService } from './title.service';
+import { List } from './list.model';
+import { ListService } from './list.service';
+import { Item } from './item.model';
+import { ListDto } from './list-dto.model';
 
 @Component({
   selector: 'etmdb-dashboard',
@@ -18,28 +20,27 @@ export class DashboardComponent implements OnInit {
   form!: FormGroup;
   filterForm!: FormGroup;
 
-  options = [{
+  predefinedLists = [{
     id: '13628',
-    comment: '',
     title: '13628 (inpercima - all seen movies)',
   }, {
     id: '102118',
-    comment: '',
     title: '102118 (inpercima - all seen series)',
   }];
-  filteredOptions$: Observable<Title[]> = empty();
+  lists$: Observable<List[]> = empty();
+  list!: ListDto | undefined;
 
-  titles!: Title[] | undefined;
-  titles$: Observable<Title[]> = empty();
+  items!: Item[] | undefined;
+  items$: Observable<Item[]> = empty();
 
-  constructor(private formBuilder: FormBuilder, private titleService: TitleService) { }
+  constructor(private formBuilder: FormBuilder, private listService: ListService) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       listId: [''],
       language: ['de'],
     });
-    this.filteredOptions$ = this.form.get('listId')?.valueChanges.pipe(
+    this.lists$ = this.form.get('listId')?.valueChanges.pipe(
       startWith(''),
       map(value => this.listFilter(value)),
     ) ?? empty();
@@ -47,25 +48,26 @@ export class DashboardComponent implements OnInit {
     this.filterForm = this.formBuilder.group({
       filter: [''],
     });
-    this.titles$ = this.filterForm.get('filter')?.valueChanges.pipe(
+    this.items$ = this.filterForm.get('filter')?.valueChanges.pipe(
       debounceTime(1000),
       filter(term => term.length >= 3 || !term.length),
       distinctUntilChanged(),
-      switchMap(term => term ? of(this.titleFilter(term)) : empty()),
+      switchMap(term => term ? of(this.itemFilter(term)) : empty()),
     ) ?? empty();
   }
 
   onSubmit(): void {
     this.appRunning = true;
-    this.titles = undefined;
-    this.titleService.list(this.form.value).subscribe(titles => this.titles = titles);
+    this.list = undefined;
+    this.listService.list(this.form.value).subscribe(list => this.list = list);
   }
 
-  private listFilter(term: string): Title[] {
-    return this.options.filter(option => option?.id.toLowerCase().includes(term.toLowerCase()));
+  private listFilter(term: string): List[] {
+    return this.predefinedLists.filter(list => list?.id.toLowerCase().includes(term.toLowerCase()));
   }
 
-  titleFilter(term: string): Title[] {
-    return this.titles?.filter(title => title?.title.toLowerCase().includes(term.toLowerCase())) ?? [];
+  private itemFilter(term: string): Item[] {
+    console.log(this.list);
+    return this.list?.items?.filter(item => item?.title.toLowerCase().includes(term.toLowerCase())) ?? [];
   }
 }

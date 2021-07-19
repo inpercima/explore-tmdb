@@ -13,16 +13,16 @@ class ListService {
   public function listAll($listId, $language) {
     $page = 1;
     $data = $this->request($listId, $language, $page);
-    $titles = $this->extract($data);
+    $items = $this->extract($data);
     $totalPages = $data->total_pages;
     for ($i = $page + 1; $i <= $totalPages; $i++) {
-      $titles = array_merge($titles, $this->extract($this->request($listId, $language, $i)));
+      $items = array_merge($items, $this->extract($this->request($listId, $language, $i)));
     }
-    return json_encode($titles);
+    return json_encode(array("name" => $data->name, "description" => $data->description, "items" => $items));
   }
 
   /**
-   * Executes one or multiple requests to get all titles from a public list in themoviedb.
+   * Executes one or multiple requests to get all items from a public list in themoviedb.
    */
   private function request($listId, $language, $page) {
     $apiKey = Config::API_KEY;
@@ -33,16 +33,16 @@ class ListService {
    * Extract data for the result.
    */
   private function extract($data) {
-    $titles = [];
+    $items = [];
     foreach($data->results as $key => $value) {
       $mediaType = $value->media_type;
       $title = $mediaType == 'tv' ? $value->name : $value->title;
       $commentId = "$mediaType:$value->id";
       $comment = $data->comments->$commentId;
       $comment = $comment == null ? '' : $comment;
-      array_push($titles, (object) [ 'title' => $title, 'comment' => nl2br($comment) ]);
+      array_push($items, (object) [ 'title' => $title, 'comment' => nl2br($comment) ]);
     }
-    return $titles;
+    return $items;
   }
 }
 ?>

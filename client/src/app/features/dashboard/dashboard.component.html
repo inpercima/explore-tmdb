@@ -7,10 +7,10 @@
       <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
         <div fxLayout="row">
           <mat-form-field fxFlex>
-            <input type="text" placeholder="Choose one predefined list ID or use your ID" matInput formControlName="listId" [matAutocomplete]="auto">
+            <input type="text" placeholder="Choose one predefined list ID or use your list ID" matInput formControlName="listId" [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let option of filteredOptions$ | async" [value]="option.id">
-                {{ option.title }}
+              <mat-option *ngFor="let list of lists$ | async" [value]="list.id">
+                {{ list.title }}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
@@ -28,21 +28,32 @@
 <div fxLayout="row" fxLayoutAlign="center">
   <mat-card fxFlex="60" *ngIf="appRunning">
     <mat-card-content>
-      <form *ngIf="titles" [formGroup]="filterForm" fxLayout="column">
+      <p fxLayout="row">
+        List name: {{ list?.name }}
+        <br>
+        List description: {{ list?.description }}
+      </p>
+      <form *ngIf="list" [formGroup]="filterForm" fxLayout="column">
         <mat-form-field fxFlex>
-          <input matInput placeholder="Filter titles" formControlName="filter">
+          <input matInput placeholder="Filter items" formControlName="filter">
         </mat-form-field>
-        <ng-container *ngIf="titles$ | async as titles">
+        <ng-container *ngIf="items$ | async as items">
+          <div *ngIf="items.length > 0; else noItems">
+            Found {{ items.length }} item(s).
+          </div>
+          <ng-template #noItems>
+            No entry found.
+          </ng-template>
           <mat-list fxFlex>
-            <mat-list-item *ngFor="let title of titles">
+            <mat-list-item *ngFor="let item of items">
               <mat-icon mat-list-icon>movie</mat-icon>
-              <div mat-line>{{ title.title }}</div>
-              <div mat-line [innerHTML]="title.comment"></div>
+              <div mat-line>{{ item.title }}</div>
+              <div mat-line [innerHTML]="item.comment"></div>
             </mat-list-item>
           </mat-list>
         </ng-container>
       </form>
-      <mat-progress-bar *ngIf="!titles" color="primary" mode="indeterminate" value="50"></mat-progress-bar>
+      <mat-progress-bar *ngIf="!list" color="primary" mode="indeterminate" value="50"></mat-progress-bar>
     </mat-card-content>
   </mat-card>
 </div>

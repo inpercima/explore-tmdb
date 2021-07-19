@@ -37,6 +37,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       listId: [''],
+      language: ['de'],
     });
     this.filteredOptions$ = this.form.get('listId')?.valueChanges.pipe(
       startWith(''),
@@ -57,7 +58,7 @@ export class DashboardComponent implements OnInit {
   onSubmit(): void {
     this.appRunning = true;
     this.titles = undefined;
-    this.titleService.list(this.form.value.listId).subscribe(titles => this.titles = titles);
+    this.titleService.list(this.form.value).subscribe(titles => this.titles = titles);
   }
 
   private listFilter(term: string): Title[] {

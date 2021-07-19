@@ -10,13 +10,13 @@ class ListService {
   /**
    * List all title from a public list in themoviedb.
    */
-  public function listAll($listId) {
+  public function listAll($listId, $language) {
     $page = 1;
-    $data = $this->request($listId, $page);
+    $data = $this->request($listId, $language, $page);
     $titles = $this->extract($data);
     $totalPages = $data->total_pages;
     for ($i = $page + 1; $i <= $totalPages; $i++) {
-      array_merge($titles, $this->extract($this->request($listId, $i)));
+      $titles = array_merge($titles, $this->extract($this->request($listId, $language, $i)));
     }
     return json_encode($titles);
   }
@@ -24,9 +24,9 @@ class ListService {
   /**
    * Executes one or multiple requests to get all titles from a public list in themoviedb.
    */
-  private function request($listId, $page) {
+  private function request($listId, $language, $page) {
     $apiKey = Config::API_KEY;
-    return json_decode(file_get_contents("https://api.themoviedb.org/4/list/$listId?api_key=$apiKey&page=$page"));
+    return json_decode(file_get_contents("https://api.themoviedb.org/4/list/$listId?api_key=$apiKey&language=$language&page=$page"));
   }
 
   /**

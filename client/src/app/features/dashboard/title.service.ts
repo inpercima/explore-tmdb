@@ -13,9 +13,12 @@ export class TitleService {
 
   constructor(private http: HttpClient) { }
 
-  public list(listId: string): Observable<Title[]> {
+  public list(value: any): Observable<Title[]> {
     return this.http.get<Title[]>(environment.api + 'list', {
-      params: { listId },
+      params: {
+        listId: value.listId,
+        language: value.language,
+      },
     });
   }
 }

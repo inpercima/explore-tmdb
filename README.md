@@ -4,6 +4,8 @@
 
 A simple web app allowing users to search on The Movie Database (TMDb) by using the api.
 
+For demonstration I use as default my own lists.
+
 This app is online under [explore-tmdb.inpercima.net](http://explore-tmdb.inpercima.net).
 
 This project was generated with [swaaplate](https://github.com/inpercima/swaaplate) version 2.3.1.

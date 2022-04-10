@@ -1,8 +1,5 @@
 # explore TMDb - client
 
-[![dependencies Status](https://status.david-dm.org/gh/inpercima/explore-tmdb.svg?path=client)](https://david-dm.org/inpercima/explore-tmdb?path=client)
-[![devDependencies Status](https://status.david-dm.org/gh/inpercima/explore-tmdb.svg?path=client&type=dev)](https://david-dm.org/inpercima/explore-tmdb?path=client&type=dev)
-
 ## Getting started
 
 ```bash

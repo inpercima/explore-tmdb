@@ -7,6 +7,6 @@ class Config {
    */
   public function __construct() {}
 
-  const API_KEY = '';
+  const ANY_CONFIG = '';
 }
 ?>

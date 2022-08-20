@@ -2,9 +2,8 @@
 
 [![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.md)
 
-A simple web app allowing users to search on The Movie Database (TMDb) by using the api.
-
-For demonstration I use as default my own lists.
+A simple web app that allows users to browse public lists in The Movie Database (TMDb) using the API.
+For demonstration, I use my own lists by default.
 
 This app is online under [explore-tmdb.inpercima.net](http://explore-tmdb.inpercima.net).
 
@@ -39,6 +38,6 @@ cd explore-tmdb
 
 ### Modules
 
-For the client check [explore-tmdb - client](./client).
+For the frontend check [explore-tmdb - web](./web).
 
-For the server check [explore-tmdb - api](./api).
+For the backend check [explore-tmdb - api](./api).

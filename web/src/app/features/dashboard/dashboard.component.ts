@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
 
 import { Observable, of, EMPTY } from 'rxjs';
 import { debounceTime, filter, distinctUntilChanged, switchMap, startWith, map } from 'rxjs/operators';
@@ -17,9 +17,6 @@ export class DashboardComponent implements OnInit {
 
   appRunning = false;
 
-  form!: FormGroup;
-  filterForm!: FormGroup;
-
   predefinedLists = [{
     id: '13628',
     title: '13628 (inpercima - all seen movies)',
@@ -33,21 +30,23 @@ export class DashboardComponent implements OnInit {
   items!: Item[] | undefined;
   items$: Observable<Item[]> = EMPTY;
 
-  constructor(private formBuilder: FormBuilder, private listService: ListService) { }
+  form = this.nnfb.group({
+    listId: ['', Validators.required],
+    language: ['de', Validators.required],
+  });
+
+  filterForm = this.nnfb.group({
+    filter: '',
+  });
+
+  constructor(private nnfb: NonNullableFormBuilder, private listService: ListService) { }
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      listId: [''],
-      language: ['de'],
-    });
     this.lists$ = this.form.get('listId')?.valueChanges.pipe(
       startWith(''),
       map(value => this.listFilter(value)),
     ) ?? EMPTY;
 
-    this.filterForm = this.formBuilder.group({
-      filter: [''],
-    });
     this.items$ = this.filterForm.get('filter')?.valueChanges.pipe(
       debounceTime(1000),
       filter(term => term.length >= 3 || !term.length),

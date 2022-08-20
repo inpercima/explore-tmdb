@@ -19,7 +19,7 @@
           </mat-form-field>
         </div>
         <div fxLayout="row">
-          <button fxFlex mat-raised-button color="primary">RUN/UPDATE</button>
+          <button fxFlex mat-raised-button color="primary" [disabled]="form.invalid">RUN/UPDATE</button>
         </div>
       </form>
     </mat-card-content>

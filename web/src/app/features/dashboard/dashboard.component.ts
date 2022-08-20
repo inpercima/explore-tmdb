@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import { Observable, of, empty } from 'rxjs';
+import { Observable, of, EMPTY } from 'rxjs';
 import { debounceTime, filter, distinctUntilChanged, switchMap, startWith, map } from 'rxjs/operators';
 
 import { List } from './list.model';
@@ -27,11 +27,11 @@ export class DashboardComponent implements OnInit {
     id: '102118',
     title: '102118 (inpercima - all seen series)',
   }];
-  lists$: Observable<List[]> = empty();
+  lists$: Observable<List[]> = EMPTY;
   list!: ListDto | undefined;
 
   items!: Item[] | undefined;
-  items$: Observable<Item[]> = empty();
+  items$: Observable<Item[]> = EMPTY;
 
   constructor(private formBuilder: FormBuilder, private listService: ListService) { }
 
@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
     this.lists$ = this.form.get('listId')?.valueChanges.pipe(
       startWith(''),
       map(value => this.listFilter(value)),
-    ) ?? empty();
+    ) ?? EMPTY;
 
     this.filterForm = this.formBuilder.group({
       filter: [''],
@@ -52,8 +52,8 @@ export class DashboardComponent implements OnInit {
       debounceTime(1000),
       filter(term => term.length >= 3 || !term.length),
       distinctUntilChanged(),
-      switchMap(term => term ? of(this.itemFilter(term)) : empty()),
-    ) ?? empty();
+      switchMap(term => term ? of(this.itemFilter(term)) : EMPTY),
+    ) ?? EMPTY;
   }
 
   onSubmit(): void {
@@ -67,7 +67,6 @@ export class DashboardComponent implements OnInit {
   }
 
   private itemFilter(term: string): Item[] {
-    console.log(this.list);
     return this.list?.items?.filter(item => item?.title.toLowerCase().includes(term.toLowerCase())) ?? [];
   }
 }

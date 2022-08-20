@@ -17,17 +17,16 @@ export class DashboardComponent implements OnInit {
 
   appRunning = false;
 
-  predefinedLists = [{
+  lists = [{
     id: '13628',
     title: '13628 (inpercima - all seen movies)',
   }, {
     id: '102118',
     title: '102118 (inpercima - all seen series)',
   }];
-  lists$: Observable<List[]> = EMPTY;
-  list!: ListDto | undefined;
+  filteredLists$: Observable<List[]> = EMPTY;
+  list: ListDto | undefined;
 
-  items!: Item[] | undefined;
   items$: Observable<Item[]> = EMPTY;
 
   form = this.nnfb.group({
@@ -42,7 +41,7 @@ export class DashboardComponent implements OnInit {
   constructor(private nnfb: NonNullableFormBuilder, private listService: ListService) { }
 
   ngOnInit(): void {
-    this.lists$ = this.form.get('listId')?.valueChanges.pipe(
+    this.filteredLists$ = this.form.get('listId')?.valueChanges.pipe(
       startWith(''),
       map(value => this.listFilter(value)),
     ) ?? EMPTY;
@@ -62,7 +61,7 @@ export class DashboardComponent implements OnInit {
   }
 
   private listFilter(term: string): List[] {
-    return this.predefinedLists.filter(list => list?.id.toLowerCase().includes(term.toLowerCase()));
+    return this.lists.filter(list => list.id.toLowerCase().includes(term.toLowerCase()));
   }
 
   private itemFilter(term: string): Item[] {

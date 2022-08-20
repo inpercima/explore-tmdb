@@ -9,7 +9,7 @@
           <mat-form-field fxFlex>
             <input type="text" placeholder="Choose one predefined list ID or use your list ID" matInput formControlName="listId" [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let list of lists$ | async" [value]="list.id">
+              <mat-option *ngFor="let list of filteredLists$ | async" [value]="list.id">
                 {{ list.title }}
               </mat-option>
             </mat-autocomplete>

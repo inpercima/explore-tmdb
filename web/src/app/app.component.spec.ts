@@ -1,17 +1,25 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AppComponent } from './app.component';
+import { MaterialModule } from './shared/material/material.module';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        MatToolbarModule,
+        MaterialModule
       ],
       declarations: [
         AppComponent,
       ],
+      /**
+       * avoid error:
+       * ERROR: 'NG0304: 'etmdb-dashboard' is not a known element (used in the 'AppComponent' component template)
+       * 
+       * Check: https://angular.io/guide/testing-components-scenarios#nested-component-tests
+       */
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   });
 

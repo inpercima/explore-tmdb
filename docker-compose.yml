@@ -3,7 +3,7 @@ version: "3.8"
 services:
   web:
     environment:
-      - MODE=dev
+      - MODE=${MODE}
     image: webdevops/php-apache:8.0-alpine
     ports:
       - "85:80"

@@ -4,7 +4,15 @@
 
 This docker version is used to run the backend in container if apache and php are not installed locally.
 
-Check for the existence of `config.dev.php` as described in [explore-tmdb - api](./api).
+Create environment file for `docker` and `docker-compose` and check the [configuration](#configuration).
+
+```bash
+cp default.env .env
+```
+
+**Note**: This file will not be under version control but listed in .gitignore.
+
+Check for the existence of `config.dev.php` and `config.prod.php` as described in [explore-tmdb - api](./api).
 
 ## Usage
 
@@ -21,3 +29,17 @@ docker-compose up -d --build
 # stop the container
 docker-compose down
 ```
+
+## Configuration
+
+### Table of contents
+
+* [MODE](#mode)
+
+### `MODE`
+
+Defines the mode in which the backend should be started.
+Valid values are `dev` and `prod`.
+
+* default: `dev`
+* type: `string`

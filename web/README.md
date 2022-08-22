@@ -10,7 +10,7 @@ cd web
 yarn
 ```
 
-Create environment files for `devMode` and `prodMode`.
+Create environment files for `dev mode` and `prod mode`.
 
 ```bash
 cp src/environments/environment.ts src/environments/environment.dev.ts
@@ -26,7 +26,7 @@ cp src/environments/environment.ts src/environments/environment.prod.ts
 It is recommanded to use a server to get full access of all angular.
 For the other options your app should run on a server which you like.
 
-### Run in devMode
+### Run in dev mode
 
 ```bash
 # build, reachable on http://localhost/app/path/to/dist/
@@ -42,7 +42,7 @@ yarn watch:dev
 ### Package
 
 ```bash
-# build in prodMode, compressed
+# build in prod mode, compressed
 yarn build:prod
 ```
 

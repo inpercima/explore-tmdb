@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  web:
+    environment:
+      - MODE=dev
+    image: webdevops/php-apache:8.0-alpine
+    ports:
+      - "85:80"
+    volumes:
+      - ./api:/app

@@ -7,7 +7,7 @@
 cd api
 ```
 
-Create config files for `devMode` and `prodMode`.
+Create config files for `dev mode` and `prod mode`.
 
 ```bash
 cp config/config.default.php config/config.dev.php

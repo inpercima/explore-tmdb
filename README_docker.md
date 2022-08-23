@@ -34,7 +34,7 @@ docker compose down
 
 ### Table of contents
 
-* [MODE](#mode)
+* [MODE](#MODE)
 
 ### `MODE`
 

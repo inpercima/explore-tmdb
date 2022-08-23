@@ -23,7 +23,7 @@ This project was generated with [swaaplate](https://github.com/inpercima/swaapla
 ### Docker (when running backend in docker)
 
 * `docker 20.10.17` or higher
-* `docker-compose 2.10.0` or higher
+* `docker compose 2.10.0` or higher
 
 ### Node, npm or yarn
 

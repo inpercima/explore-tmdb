@@ -1,10 +1,10 @@
-# explore TMDb - web
+# explore TMDb - frontend
 
 ## Getting started
 
 ```bash
-# all commands used in ./web
-cd web
+# all commands used in ./frontend
+cd frontend
 
 # install tools and frontend dependencies
 yarn
@@ -68,7 +68,7 @@ Change for `production mode` the option `production` to `true`.
 
 * [api](#api)
 * [appname](#appname)
-* [defaultRoute](#defaultRoute)
+* [defaultRoute](#defaultroute)
 * [production](#production)
 * [theme](#theme)
 

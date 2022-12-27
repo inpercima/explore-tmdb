@@ -1,41 +1,43 @@
-<div fxLayout="row" fxLayoutAlign="center">
-  <mat-card fxFlex="60">
-    <mat-card-header>
-      <mat-card-title>Options and run</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
-        <div fxLayout="row wrap">
-          <mat-form-field fxFlex>
-            <input type="text" placeholder="Choose one predefined list ID or use your list ID" matInput formControlName="listId" [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let list of filteredLists$ | async" [value]="list.id">
-                {{ list.title }}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
-          <mat-form-field fxFlex fxFlexOffset="2">
-            <input type="text" placeholder="Language" matInput formControlName="language">
-          </mat-form-field>
-        </div>
-        <div fxLayout="row">
-          <button fxFlex mat-raised-button color="primary" [disabled]="form.invalid">RUN/UPDATE</button>
-        </div>
-      </form>
-    </mat-card-content>
-  </mat-card>
-</div>
-<div fxLayout="row" fxLayoutAlign="center">
-  <mat-card fxFlex="60" *ngIf="appRunning">
-    <mat-card-content>
-      <p fxLayout="row">
-        List name: {{ list?.name }}
-        <br>
-        List description: {{ list?.description }}
-      </p>
-      <form *ngIf="list" [formGroup]="filterForm" fxLayout="column">
-        <mat-form-field fxFlex>
-          <input matInput placeholder="Filter items" formControlName="filter">
+<mat-card class="w-7/12 mx-auto">
+  <mat-card-header>
+    <mat-card-title>Options and run</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
+      <div class="flex gap-5">
+        <mat-form-field class="flex-1">
+          <mat-label>Choose one predefined list ID or use your list ID</mat-label>
+          <input type="text" matInput formControlName="listId" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let list of filteredLists$ | async" [value]="list.id">
+              {{ list.title }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field class="flex-1">
+          <mat-label>Language</mat-label>
+          <input type="text" matInput formControlName="language">
+        </mat-form-field>
+      </div>
+      <div class="flex">
+        <button class="flex-1" mat-raised-button color="primary" [disabled]="form.invalid">RUN/UPDATE</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="w-7/12 mx-auto" *ngIf="appRunning">
+  <mat-card-content>
+    <p>
+      List name: {{ list?.name }}
+      <br>
+      List description: {{ list?.description }}
+    </p>
+    <form [formGroup]="filterForm" fxLayout="column">
+      <div class="flex">
+        <mat-form-field class="flex-1">
+          <mat-label>Filter items</mat-label>
+          <input matInput formControlName="filter">
         </mat-form-field>
         <ng-container *ngIf="items$ | async as items">
           <div *ngIf="items.length > 0; else noItems">
@@ -44,7 +46,7 @@
           <ng-template #noItems>
             No entry found.
           </ng-template>
-          <mat-list fxFlex>
+          <mat-list class="flex-1">
             <mat-list-item *ngFor="let item of items">
               <mat-icon mat-list-icon>movie</mat-icon>
               <div mat-line>{{ item.title }}</div>
@@ -52,8 +54,8 @@
             </mat-list-item>
           </mat-list>
         </ng-container>
-      </form>
-      <mat-progress-bar *ngIf="!list" color="primary" mode="indeterminate" value="50"></mat-progress-bar>
-    </mat-card-content>
-  </mat-card>
-</div>
+      </div>
+    </form>
+    <mat-progress-bar *ngIf="!list" color="primary" mode="indeterminate" value="50"></mat-progress-bar>
+  </mat-card-content>
+</mat-card>

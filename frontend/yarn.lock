@@ -3933,10 +3933,10 @@ custom-event@~1.0.0:
   resolved "https://registry.yarnpkg.com/custom-event/-/custom-event-1.0.1.tgz#5d02a46850adf1b4a317946a3928fccb5bfd0425"
   integrity sha512-GAj5FOq0Hd+RsCGVJxZuKaIDXDf3h6GQoNEjFgbLLI/trgtavwUbSnZ5pVfg27DVCaWjIohryS0JFwIJyT2cMg==
 
-cypress@latest:
-  version "12.2.0"
-  resolved "https://registry.yarnpkg.com/cypress/-/cypress-12.2.0.tgz#86ddc1ecfffadf57a8689e211cfb4437735f4e92"
-  integrity sha512-kvl95ri95KK8mAy++tEU/wUgzAOMiIciZSL97LQvnOinb532m7dGvwN0mDSIGbOd71RREtmT9o4h088RjK5pKw==
+cypress@12.8.1:
+  version "12.8.1"
+  resolved "https://registry.yarnpkg.com/cypress/-/cypress-12.8.1.tgz#0c6e67f34554d553138697aaf349b637d80004eb"
+  integrity sha512-lIFbKdaSYAOarNLHNFa2aPZu6YSF+8UY4VRXMxJrFUnk6RvfG0AWsZ7/qle/aIz30TNUD4aOihz2ZgS4vuQVSA==
   dependencies:
     "@cypress/request" "^2.88.10"
     "@cypress/xvfb" "^1.2.4"
@@ -3955,7 +3955,7 @@ cypress@latest:
     commander "^5.1.0"
     common-tags "^1.8.0"
     dayjs "^1.10.4"
-    debug "^4.3.2"
+    debug "^4.3.4"
     enquirer "^2.3.6"
     eventemitter2 "6.4.7"
     execa "4.1.0"
@@ -7618,9 +7618,9 @@ socket.io-adapter@~2.4.0:
   integrity sha512-W4N+o69rkMEGVuk2D/cvca3uYsvGlMwsySWV447y99gUPghxq42BxqLNMndb+a1mm/5/7NeXVQS7RLa2XyXvYg==
 
 socket.io-parser@~4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/socket.io-parser/-/socket.io-parser-4.2.1.tgz#01c96efa11ded938dcb21cbe590c26af5eff65e5"
-  integrity sha512-V4GrkLy+HeF1F/en3SpUaM+7XxYXpuMUWLGde1kSSh5nQMN4hLrbPIkD+otwh6q9R6NOQBN4AMaOZ2zVjui82g==
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/socket.io-parser/-/socket.io-parser-4.2.3.tgz#926bcc6658e2ae0883dc9dee69acbdc76e4e3667"
+  integrity sha512-JMafRntWVO2DCJimKsRTh/wnqVvO4hrfwOqtO7f+uzwsQMuxO6VwImtYxaQ+ieoyshWOTJyV0fA21lccEXRPpQ==
   dependencies:
     "@socket.io/component-emitter" "~3.1.0"
     debug "~4.3.1"

@@ -20,7 +20,7 @@ cp config/config.default.php config/config.prod.php
 
 ### Table of contents
 
-* [API_KEY](#apikey)
+* [API_KEY](#api_key)
 
 ### `API_KEY`
 

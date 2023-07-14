@@ -1,25 +1,15 @@
-import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { MaterialModule } from './shared/material/material.module';
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        MaterialModule
-      ],
-      declarations: [
-        AppComponent,
-      ],
-      /**
-       * avoid error:
-       * ERROR: 'NG0304: 'etmdb-dashboard' is not a known element (used in the 'AppComponent' component template)
-       * 
-       * Check: https://angular.io/guide/testing-components-scenarios#nested-component-tests
-       */
-      schemas: [NO_ERRORS_SCHEMA]
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule, NoopAnimationsModule, AppComponent],
     }).compileComponents();
   });
 

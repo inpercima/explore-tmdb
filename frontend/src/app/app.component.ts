@@ -1,17 +1,20 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, HostBinding, TemplateRef } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { environment } from '../environments/environment';
+import { DashboardComponent } from './features/dashboard/dashboard.component';
 
 @Component({
+  imports: [MatDialogModule, MatToolbarModule, DashboardComponent],
   selector: 'etmdb-root',
-  templateUrl: './app.component.html',
+  standalone: true,
   styleUrls: ['./app.component.css'],
+  templateUrl: './app.component.html',
 })
 export class AppComponent {
-
   public appname: string;
 
   // Adds the custom theme to the app root.
@@ -26,7 +29,7 @@ export class AppComponent {
 
   openDialog(ref: TemplateRef<any>): void {
     this.dialog.open(ref, {
-      maxWidth: "800px",
+      maxWidth: '800px',
     });
   }
 }

@@ -3,12 +3,13 @@ import { Component, HostBinding, TemplateRef } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 
+import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { environment } from '../environments/environment';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 
 @Component({
-  imports: [MatDialogModule, MatToolbarModule, DashboardComponent],
+  imports: [DashboardComponent, MatButtonModule, MatDialogModule, MatToolbarModule],
   selector: 'etmdb-root',
   standalone: true,
   styleUrls: ['./app.component.css'],

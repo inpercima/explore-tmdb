@@ -29,7 +29,7 @@
     },
     "packageJson": {
       "contributors": [{
-        "name": "Marcel Jänicke",
+        "name": "Marcel Hendrich",
         "email": "inpercima@gmail.com"
       }],
       "homepage": "http://explore-tmdb.inpercima.net/",
@@ -41,7 +41,7 @@
     "useYarn": true
   },
   "general": {
-    "author": "Marcel Jänicke",
+    "author": "Marcel Hendrich",
     "description": "A simple web app allowing users to search on The Movie Database (TMDb) by using the api.",
     "modRewriteIndex": true,
     "name": "explore-tmdb",

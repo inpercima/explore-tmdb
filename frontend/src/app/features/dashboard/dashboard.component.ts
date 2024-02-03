@@ -4,7 +4,7 @@ import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angula
 import { EMPTY, Observable, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map, startWith, switchMap } from 'rxjs/operators';
 
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -34,13 +34,11 @@ import { ListService } from './list.service';
     MatListModule,
     MatOptionModule,
     MatProgressBarModule,
-    NgFor,
-    NgIf,
     ReactiveFormsModule,
   ],
 })
 export class DashboardComponent implements OnInit {
-  appRunning = false;
+  loading = false;
 
   lists = [
     {
@@ -57,16 +55,16 @@ export class DashboardComponent implements OnInit {
 
   items$: Observable<Item[]> = EMPTY;
 
-  form = this.nnfb.group({
+  form = this.fb.group({
     listId: ['', Validators.required],
     language: ['de', Validators.required],
   });
 
-  filterForm = this.nnfb.group({
+  filterForm = this.fb.group({
     filter: '',
   });
 
-  constructor(private nnfb: NonNullableFormBuilder, private listService: ListService) {}
+  constructor(private fb: NonNullableFormBuilder, private listService: ListService) {}
 
   ngOnInit(): void {
     this.filteredLists$ =
@@ -85,7 +83,7 @@ export class DashboardComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.appRunning = true;
+    this.loading = true;
     this.list = undefined;
     this.listService.list(this.form.value).subscribe((list) => (this.list = list));
   }

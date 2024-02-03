@@ -7,16 +7,18 @@
       <div class="flex gap-5">
         <mat-form-field class="flex-1">
           <mat-label>Choose one predefined list ID or use your list ID</mat-label>
-          <input type="text" matInput formControlName="listId" [matAutocomplete]="auto">
+          <input type="text" matInput formControlName="listId" [matAutocomplete]="auto" />
           <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let list of filteredLists$ | async" [value]="list.id">
+            @for (list of filteredLists$ | async; track list.id) {
+            <mat-option [value]="list.id">
               {{ list.title }}
             </mat-option>
+            }
           </mat-autocomplete>
         </mat-form-field>
         <mat-form-field class="flex-1">
           <mat-label>Language</mat-label>
-          <input type="text" matInput formControlName="language">
+          <input type="text" matInput formControlName="language" />
         </mat-form-field>
       </div>
       <div class="flex">
@@ -26,36 +28,38 @@
   </mat-card-content>
 </mat-card>
 
-<mat-card class="w-7/12 mx-auto" *ngIf="appRunning">
+@if (loading) {
+<mat-card class="w-7/12 mx-auto">
   <mat-card-content>
     <p>
       List name: {{ list?.name }}
-      <br>
+      <br />
       List description: {{ list?.description }}
     </p>
     <form [formGroup]="filterForm" fxLayout="column">
       <div class="flex">
         <mat-form-field class="flex-1">
           <mat-label>Filter items</mat-label>
-          <input matInput formControlName="filter">
+          <input matInput formControlName="filter" />
         </mat-form-field>
-        <ng-container *ngIf="items$ | async as items">
-          <div *ngIf="items.length > 0; else noItems">
-            Found {{ items.length }} item(s).
-          </div>
-          <ng-template #noItems>
-            No entry found.
-          </ng-template>
-          <mat-list class="flex-1">
-            <mat-list-item *ngFor="let item of items">
-              <mat-icon mat-list-icon>movie</mat-icon>
-              <div mat-line>{{ item.title }}</div>
-              <div mat-line [innerHTML]="item.comment"></div>
-            </mat-list-item>
-          </mat-list>
-        </ng-container>
+        @if (items$ | async; as items) { @if (items.length > 0) {
+        <div>Found {{ items.length }} item(s).</div>
+        } @else { No entry found. }
+        <mat-list class="flex-1">
+          @for (item of items; track item.title) {
+          <mat-list-item>
+            <mat-icon mat-list-icon>movie</mat-icon>
+            <div mat-line>{{ item.title }}</div>
+            <div mat-line [innerHTML]="item.comment"></div>
+          </mat-list-item>
+          }
+        </mat-list>
+        }
       </div>
     </form>
-    <mat-progress-bar *ngIf="!list" color="primary" mode="indeterminate" value="50"></mat-progress-bar>
+    @if (!list) {
+    <mat-progress-bar color="primary" mode="indeterminate" value="50"></mat-progress-bar>
+    }
   </mat-card-content>
 </mat-card>
+}

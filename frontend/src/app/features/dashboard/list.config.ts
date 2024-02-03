@@ -1,6 +1,6 @@
-import { List } from './list.model';
+import { Option } from './option.model';
 
-export const LISTS: List[] = [
+export const OPTIONS: Option[] = [
   {
     id: '13628',
     title: '13628 (inpercima - all seen movies)',

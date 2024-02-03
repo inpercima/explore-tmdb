@@ -1,4 +1,7 @@
+import { Item } from './item.model';
+
 export interface List {
-  id: string;
-  title: string;
+  name: string;
+  description: string;
+  items: Item[];
 }

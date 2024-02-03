@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ListDto } from './list-dto.model';
 import { environment } from '../../../environments/environment';
+import { List } from './list.model';
 import { Query } from './query.model';
 
 @Injectable({
@@ -11,8 +11,8 @@ import { Query } from './query.model';
 export class ListService {
   constructor(private http: HttpClient) {}
 
-  public list(query: Query): Observable<ListDto> {
-    return this.http.get<ListDto>(environment.api + 'list', {
+  public list(query: Query): Observable<List> {
+    return this.http.get<List>(environment.api + 'list', {
       params: {
         listId: query.listId,
         language: query.language,

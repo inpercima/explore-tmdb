@@ -5,13 +5,10 @@ environment.prod.ts
 config.dev.php
 config.prod.php
 
-# ignore all in '.vscode' b/c some vsc config files contain user specific content
-.vscode/*
-
 # end project specific
 
-# Created by https://www.toptal.com/developers/gitignore/api/node,yarn,angular,eclipse,intellij+all,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=node,yarn,angular,eclipse,intellij+all,visualstudiocode
+# Created by https://www.toptal.com/developers/gitignore/api/node,visualstudiocode,eclipse,intellij+all,angular
+# Edit at https://www.toptal.com/developers/gitignore?templates=node,visualstudiocode,eclipse,intellij+all,angular
 
 ### Angular ###
 ## Angular ##
@@ -356,21 +353,4 @@ dist
 .history
 .ionide
 
-### yarn ###
-# https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
-
-.yarn/*
-!.yarn/releases
-!.yarn/patches
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
-
-# if you are NOT using Zero-installs, then:
-# comment the following lines
-!.yarn/cache
-
-# and uncomment the following lines
-# .pnp.*
-
-# End of https://www.toptal.com/developers/gitignore/api/node,yarn,angular,eclipse,intellij+all,visualstudiocode
+# End of https://www.toptal.com/developers/gitignore/api/node,visualstudiocode,eclipse,intellij+all,angular

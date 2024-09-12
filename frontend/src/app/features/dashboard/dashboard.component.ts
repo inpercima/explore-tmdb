@@ -74,7 +74,7 @@ export class DashboardComponent implements OnInit {
   onSubmit(): void {
     this.loading = true;
     this.list = undefined;
-    this.listService.list(<Query>this.listForm.value).subscribe((list) => (this.list = list));
+    this.listService.list(this.listForm.value as Query).subscribe((list) => (this.list = list));
   }
 
   private optionsFilter(term: string): Option[] {

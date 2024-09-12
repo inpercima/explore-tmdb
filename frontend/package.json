@@ -24,20 +24,14 @@
   "description": "A simple web app allowing users to search on The Movie Database (TMDb) by using the api.",
   "devDependencies": {
     "@angular-devkit/build-angular": "18.2.4",
-    "@angular-eslint/builder": "18.3.1",
-    "@angular-eslint/eslint-plugin": "18.3.1",
-    "@angular-eslint/eslint-plugin-template": "18.3.1",
-    "@angular-eslint/schematics": "18.3.1",
-    "@angular-eslint/template-parser": "18.3.1",
     "@angular/cli": "18.2.4",
     "@angular/compiler-cli": "18.2.4",
     "@cypress/schematic": "2.5.2",
     "@types/jasmine": "5.1.4",
-    "@typescript-eslint/eslint-plugin": "8.5.0",
-    "@typescript-eslint/parser": "8.5.0",
+    "angular-eslint": "18.3.1",
     "autoprefixer": "10.4.20",
     "cypress": "13.14.2",
-    "eslint": "9.10.0",
+    "eslint": "9.9.1",
     "jasmine-core": "5.3.0",
     "karma": "6.4.4",
     "karma-chrome-launcher": "3.2.0",
@@ -46,10 +40,11 @@
     "karma-jasmine-html-reporter": "2.1.0",
     "postcss": "8.4.45",
     "tailwindcss": "3.4.11",
-    "typescript": "5.5.4"
+    "typescript": "5.5.4",
+    "typescript-eslint": "8.2.0"
   },
   "engines": {
-    "node": ">=20.13.1"
+    "node": ">=20.15.1"
   },
   "homepage": "http://explore-tmdb.inpercima.net/",
   "license": "MIT",
@@ -58,9 +53,8 @@
   "repository": "https://github.com/inpercima/explore-tmdb/",
   "scripts": {
     "build:dev": "ng lint && ng build --configuration=development",
-    "serve:dev": "ng serve -o --configuration=development",
-    "watch:dev": "ng build --watch --configuration=development",
-    "build:prod": "ng lint && ng build"
+    "build:prod": "ng lint && ng build",
+    "start": "ng serve -o --configuration=development"
   },
   "version": "1.0.0-SNAPSHOT"
 }

@@ -13,7 +13,7 @@ This project was generated with [swaaplate](https://github.com/inpercima/swaapla
 
 ### Angular CLI
 
-* `@angular/cli 18.2.3` or higher
+* `@angular/cli 19.0.6` or higher
 
 ### Apache and php
 
@@ -22,9 +22,9 @@ This project was generated with [swaaplate](https://github.com/inpercima/swaapla
 
 ### Node, npm or pnpm
 
-* `node 20.15.1` or higher in combination with
-  * `npm 10.7.0` or higher or
-  * `pnpm 9.9.0` or higher, used in this repository
+* `node 22.11.0` or higher in combination with
+  * `npm 10.9.0` or higher or
+  * `pnpm 9.14.2` or higher, used in this repository
 
 ## Getting started
 

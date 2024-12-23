@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
@@ -22,7 +22,6 @@ import { Query } from './query.model';
 @Component({
   selector: 'etmdb-dashboard',
   templateUrl: './dashboard.component.html',
-  standalone: true,
   imports: [
     AsyncPipe,
     MatAutocompleteModule,
@@ -38,6 +37,9 @@ import { Query } from './query.model';
   ],
 })
 export class DashboardComponent implements OnInit {
+  private fb = inject(NonNullableFormBuilder);
+  private listService = inject(ListService);
+
   loading = false;
 
   filteredOptions$: Observable<Option[]> = EMPTY;
@@ -52,8 +54,6 @@ export class DashboardComponent implements OnInit {
   filterForm = this.fb.group({
     filter: '',
   });
-
-  constructor(private fb: NonNullableFormBuilder, private listService: ListService) {}
 
   ngOnInit(): void {
     this.filteredOptions$ =

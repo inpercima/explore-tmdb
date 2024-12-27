@@ -39,9 +39,10 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/.htaccess",
-              "src/favicon.ico",
-              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "public"
+              },
               {
                 "glob": "**/*",
                 "ignore": [
@@ -64,13 +65,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2MB",
+                  "maximumWarning": "1MB",
                   "maximumError": "2MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
                 }
               ],
               "outputHashing": "all",
@@ -88,7 +89,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "5MB",
+                  "maximumWarning": "3MB",
                   "maximumError": "5MB"
                 },
                 {

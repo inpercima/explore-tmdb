@@ -11,7 +11,7 @@ import { DashboardComponent } from './features/dashboard/dashboard.component';
 @Component({
   imports: [DashboardComponent, MatButtonModule, MatDialogModule, MatToolbarModule],
   selector: 'etmdb-root',
-  styleUrls: ['./app.component.css'],
+  styleUrl: './app.component.css',
   templateUrl: './app.component.html',
 })
 export class AppComponent {
@@ -19,7 +19,7 @@ export class AppComponent {
   private titleService = inject(Title);
   private document = inject<Document>(DOCUMENT);
 
-  public appname: string;
+  appname: string;
 
   public constructor() {
     this.appname = environment.appname;

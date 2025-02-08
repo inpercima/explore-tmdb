@@ -44,7 +44,7 @@
     "typescript-eslint": "8.18.1"
   },
   "engines": {
-    "node": ">=22.11.0"
+    "node": ">=22.13.1"
   },
   "homepage": "http://explore-tmdb.inpercima.net/",
   "license": "MIT",

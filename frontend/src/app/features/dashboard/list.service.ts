@@ -11,7 +11,6 @@ import { Query } from './query.model';
 export class ListService {
   private http = inject(HttpClient);
 
-
   public list(query: Query): Observable<List> {
     return this.http.get<List>(environment.api + 'list', {
       params: {

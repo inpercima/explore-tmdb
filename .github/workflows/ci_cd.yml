@@ -35,7 +35,7 @@ jobs:
           pnpm install
           pnpm build:prod
 
-      - name: Deplo
+      - name: Deploy
         uses: wlixcc/SFTP-Deploy-Action@v1.2.5
         with:
           username: ${{ secrets.FTP_USERNAME }}

@@ -18,7 +18,7 @@ This project was generated with [swaaplate](https://github.com/inpercima/swaapla
 ### Apache and php
 
 * `Apache 2.4` or higher
-* `php 8.0` or higher
+* `php 8.2` or higher
 
 ### Node, npm or pnpm
 
@@ -41,3 +41,5 @@ cd explore-tmdb
 For the frontend check [explore-tmdb - frontend](./frontend).
 
 For the backend check [explore-tmdb - api](./api).
+
+For the docker check [explore-tmdb - docker](./README_docker.md).

@@ -102,7 +102,7 @@ export class DashboardComponent implements OnInit {
     const item: CustomItem = this.addItemForm.value as CustomItem;
 
     this.itemService.addItem(item).subscribe({
-      next: (response) => {
+      next: () => {
         this.addItemSuccess = true;
         this.addItemMessage = 'Item added successfully!';
         this.addItemForm.reset({ media_type: 'movie' });

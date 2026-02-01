@@ -28,6 +28,56 @@
   </mat-card-content>
 </mat-card>
 
+<mat-card class="w-7/12 mx-auto mt-5">
+  <mat-card-header>
+    <mat-card-title>Add Custom Item</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    @if (addItemMessage) {
+    <div class="mb-4 p-3 rounded" [ngClass]="{
+      'bg-green-100 text-green-800': addItemSuccess,
+      'bg-red-100 text-red-800': !addItemSuccess
+    }">
+      {{ addItemMessage }}
+    </div>
+    }
+    <form [formGroup]="addItemForm" novalidate (ngSubmit)="onAddItem()">
+      <div class="flex flex-col gap-4">
+        <mat-form-field class="flex-1">
+          <mat-label>Title</mat-label>
+          <input type="text" matInput formControlName="title" placeholder="Enter movie or TV show title" />
+          @if (addItemForm.get('title')?.hasError('required') && addItemForm.get('title')?.touched) {
+          <mat-error>Title is required</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="flex-1">
+          <mat-label>Comment</mat-label>
+          <textarea matInput formControlName="comment" rows="3" placeholder="Enter your comment"></textarea>
+        </mat-form-field>
+        <mat-form-field class="flex-1">
+          <mat-label>Media Type</mat-label>
+          <mat-select formControlName="media_type">
+            <mat-option value="movie">Movie</mat-option>
+            <mat-option value="tv">TV Show</mat-option>
+          </mat-select>
+          @if (addItemForm.get('media_type')?.hasError('required') && addItemForm.get('media_type')?.touched) {
+          <mat-error>Media type is required</mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div class="flex mt-4">
+        <button class="flex-1" mat-raised-button color="primary" type="submit" [disabled]="addItemForm.invalid || addItemSubmitting">
+          @if (addItemSubmitting) {
+          <span>Adding...</span>
+          } @else {
+          <span>Add Item</span>
+          }
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+
 @if (loading) {
 <mat-card class="w-7/12 mx-auto">
   <mat-card-content>

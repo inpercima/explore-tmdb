@@ -1,8 +1,10 @@
 # begin project specific
 
 environment.dev.ts
+environment.prod.ts
 config.dev.php
 config.prod.php
+custom_items.db
 
 # end project specific
 

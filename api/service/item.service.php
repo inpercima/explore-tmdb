@@ -31,7 +31,7 @@ class ItemService {
    * Initialize database schema
    */
   private function initializeDatabase() {
-    $setupSql = file_get_contents('../database/setup.sql');
+    $setupSql = file_get_contents(__DIR__ . '/../database/setup.sql');
     $this->db->exec($setupSql);
   }
 

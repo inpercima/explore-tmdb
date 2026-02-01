@@ -45,6 +45,8 @@ export class DashboardComponent implements OnInit {
   private listService = inject(ListService);
   private itemService = inject(ItemService);
 
+  private readonly MESSAGE_DISPLAY_DURATION = 5000;
+
   loading = false;
   addItemSubmitting = false;
   addItemSuccess = false;
@@ -111,7 +113,7 @@ export class DashboardComponent implements OnInit {
         // Clear message after 5 seconds
         setTimeout(() => {
           this.addItemMessage = '';
-        }, 5000);
+        }, this.MESSAGE_DISPLAY_DURATION);
       },
       error: (error) => {
         this.addItemSuccess = false;
@@ -121,7 +123,7 @@ export class DashboardComponent implements OnInit {
         // Clear message after 5 seconds
         setTimeout(() => {
           this.addItemMessage = '';
-        }, 5000);
+        }, this.MESSAGE_DISPLAY_DURATION);
       },
     });
   }

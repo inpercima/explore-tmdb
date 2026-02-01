@@ -12,14 +12,24 @@ class AuthMiddleware {
    * Returns true if valid, false otherwise
    */
   public function validateApiKey() {
-    $headers = getallheaders();
     $apiKey = null;
 
     // Check for API key in Authorization header
-    if (isset($headers['Authorization'])) {
-      $apiKey = str_replace('Bearer ', '', $headers['Authorization']);
-    } elseif (isset($headers['X-API-Key'])) {
-      $apiKey = $headers['X-API-Key'];
+    // Use getallheaders() if available, otherwise fallback to $_SERVER
+    if (function_exists('getallheaders')) {
+      $headers = getallheaders();
+      if (isset($headers['Authorization'])) {
+        $apiKey = str_replace('Bearer ', '', $headers['Authorization']);
+      } elseif (isset($headers['X-API-Key'])) {
+        $apiKey = $headers['X-API-Key'];
+      }
+    } else {
+      // Fallback for non-Apache servers
+      if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
+        $apiKey = str_replace('Bearer ', '', $_SERVER['HTTP_AUTHORIZATION']);
+      } elseif (isset($_SERVER['HTTP_X_API_KEY'])) {
+        $apiKey = $_SERVER['HTTP_X_API_KEY'];
+      }
     }
 
     // Compare with configured API key

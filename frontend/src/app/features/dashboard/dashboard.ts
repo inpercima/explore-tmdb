@@ -20,8 +20,8 @@ import { Option } from './option.model';
 import { Query } from './query.model';
 
 @Component({
-  selector: 'etmdb-dashboard',
-  templateUrl: './dashboard.component.html',
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.html',
   imports: [
     AsyncPipe,
     MatAutocompleteModule,
@@ -36,7 +36,7 @@ import { Query } from './query.model';
     ReactiveFormsModule,
   ],
 })
-export class DashboardComponent implements OnInit {
+export class Dashboard implements OnInit {
   private fb = inject(NonNullableFormBuilder);
   private listService = inject(ListService);
 
@@ -59,7 +59,7 @@ export class DashboardComponent implements OnInit {
     this.filteredOptions$ =
       this.listForm.get('listId')?.valueChanges.pipe(
         startWith(''),
-        map((value) => this.optionsFilter(value))
+        map((value) => this.optionsFilter(value)),
       ) ?? EMPTY;
 
     this.items$ =
@@ -67,7 +67,7 @@ export class DashboardComponent implements OnInit {
         debounceTime(1000),
         filter((term) => term.length >= 3 || !term.length),
         distinctUntilChanged(),
-        switchMap((term) => (term ? of(this.itemFilter(term)) : EMPTY))
+        switchMap((term) => (term ? of(this.itemFilter(term)) : EMPTY)),
       ) ?? EMPTY;
   }
 

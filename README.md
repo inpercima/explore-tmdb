@@ -7,13 +7,11 @@ For demonstration, I use my own lists by default.
 
 This app is online under [explore-tmdb.inpercima.net](http://explore-tmdb.inpercima.net).
 
-This project was generated with [swaaplate](https://github.com/inpercima/swaaplate) version 2.5.3.
-
 ## Prerequisites
 
 ### Angular CLI
 
-* `@angular/cli 20.3.5` or higher
+* `@angular/cli 21.2.3` or higher
 
 ### Apache and php
 
@@ -28,9 +26,9 @@ Is required if started locally and not with Docker.
 
 ### Node, npm or pnpm
 
-* `node 22.20.0` or higher in combination with
-  * `npm 10.9.3` or higher or
-  * `pnpm 10.18.2` or higher, used in this repository
+* `node 24.14.0` or higher in combination with
+  * `npm 11.9.0` or higher or
+  * `pnpm 10.32.0` or higher, used in this repository
 
 ## Getting started
 

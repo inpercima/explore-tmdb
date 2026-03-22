@@ -1,4 +1,4 @@
-name: Node CI/CD
+name: Node CI
 
 on:
   push:
@@ -11,22 +11,20 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [22]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install pnpm
+      - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 10
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 24.14
           cache: "pnpm"
           cache-dependency-path: ./frontend/pnpm-lock.yaml
 

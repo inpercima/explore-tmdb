@@ -20,7 +20,6 @@
   },
   "description": "A simple web app allowing users to search on The Movie Database (TMDb) by using the api.",
   "devDependencies": {
-    "@angular-eslint/builder": "21.3.1",
     "@angular/build": "21.2.3",
     "@angular/cli": "21.2.3",
     "@angular/compiler-cli": "21.2.5",
@@ -30,6 +29,7 @@
     "angular-eslint": "21.3.1",
     "cypress": "15.12.0",
     "eslint": "10.1.0",
+    "eslint-config-prettier": "10.1.8",
     "jsdom": "29.0.1",
     "postcss": "8.5.8",
     "tailwindcss": "4.2.2",

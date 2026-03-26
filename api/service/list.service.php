@@ -43,7 +43,7 @@ class ListService {
    */
   private function extract($data) {
     $items = [];
-    foreach($data->results as $key => $value) {
+    foreach($data->items as $key => $value) {
       $mediaType = $value->media_type;
       $title = $mediaType == 'tv' ? $value->name : $value->title;
       $originalTitle = $mediaType == 'tv' ? $value->original_name : $value->original_title;

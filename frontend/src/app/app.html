@@ -1,31 +1,40 @@
-<mat-toolbar class="mat-elevation-z4 justify-between">
-  {{ appname }}
-  <div>
-    <button mat-button (click)="openDialog(dialog)">APP INFO</button>
-    |
+<div class="navbar bg-primary text-primary-content shadow-lg">
+  <div class="flex-1">
+    <span class="text-xl font-bold px-4">{{ appname }}</span>
+  </div>
+  <div class="flex-none gap-1 px-4">
+    <button class="btn btn-ghost btn-sm" (click)="openDialog()">APP INFO</button>
+    <span class="opacity-40">|</span>
     <a
-      mat-button
+      class="btn btn-ghost btn-sm gap-2"
       href="https://github.com/inpercima/explore-tmdb"
       aria-label="GitHub Repository"
       title="Go to project on Github"
       target="_blank"
     >
-      <span matButtonIcon>
-        <img class="github-link" alt="GitHub Repository" src="github-mark.svg" />
-      </span>
+      <img class="h-5" alt="GitHub Repository" src="github-mark-white.svg" />
       GitHub
     </a>
   </div>
-</mat-toolbar>
-<ng-template #dialog>
-  <h2 mat-dialog-title>Overview</h2>
-  <mat-dialog-content>
-    A simple web app that allows users to browse public lists in The Movie Database (TMDb) using the API.
-    <br />
-    For demonstration, I use my own lists by default.
-  </mat-dialog-content>
-  <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close cdkFocusInitial>Close</button>
-  </mat-dialog-actions>
-</ng-template>
+</div>
+
+<dialog id="app-info-modal" class="modal">
+  <div class="modal-box max-w-2xl">
+    <h3 class="font-bold text-lg">Overview</h3>
+    <p class="py-4">
+      A simple web app that allows users to browse public lists in The Movie Database (TMDb) using the API.
+      <br />
+      For demonstration, I use my own lists by default.
+    </p>
+    <div class="modal-action">
+      <form method="dialog">
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
+
 <app-dashboard></app-dashboard>

@@ -1,17 +1,8 @@
 import { AsyncPipe } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatOptionModule } from '@angular/material/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatListModule } from '@angular/material/list';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { EMPTY, Observable, of } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, map, startWith, switchMap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs/operators';
 import { Item } from './item.model';
 import { OPTIONS } from './list.config';
 import { List } from './list.model';
@@ -22,27 +13,15 @@ import { Query } from './query.model';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.html',
-  imports: [
-    AsyncPipe,
-    MatAutocompleteModule,
-    MatButtonModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatOptionModule,
-    MatProgressBarModule,
-    ReactiveFormsModule,
-  ],
+  imports: [AsyncPipe, ReactiveFormsModule],
 })
 export class Dashboard implements OnInit {
   private fb = inject(NonNullableFormBuilder);
   private listService = inject(ListService);
 
   loading = false;
+  readonly options: Option[] = OPTIONS;
 
-  filteredOptions$: Observable<Option[]> = EMPTY;
   list: List | undefined;
   items$: Observable<Item[]> = EMPTY;
 
@@ -56,12 +35,6 @@ export class Dashboard implements OnInit {
   });
 
   ngOnInit(): void {
-    this.filteredOptions$ =
-      this.listForm.get('listId')?.valueChanges.pipe(
-        startWith(''),
-        map((value) => this.optionsFilter(value)),
-      ) ?? EMPTY;
-
     this.items$ =
       this.filterForm.get('filter')?.valueChanges.pipe(
         debounceTime(1000),
@@ -75,10 +48,6 @@ export class Dashboard implements OnInit {
     this.loading = true;
     this.list = undefined;
     this.listService.list(this.listForm.value as Query).subscribe((list) => (this.list = list));
-  }
-
-  private optionsFilter(term: string): Option[] {
-    return OPTIONS.filter((option) => option.id.toLowerCase().includes(term.toLowerCase()));
   }
 
   private itemFilter(term: string): Item[] {

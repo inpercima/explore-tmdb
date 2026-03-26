@@ -3,5 +3,4 @@ export const environment = {
   appname: 'explore TMDb',
   defaultRoute: 'dashboard',
   production: false,
-  theme: 'azure-blue',
 };

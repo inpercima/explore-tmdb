@@ -1,67 +1,77 @@
-<mat-card class="w-7/12 mx-auto">
-  <mat-card-header>
-    <mat-card-title>Options and run</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
+<div class="card bg-base-100 shadow-md w-7/12 mx-auto mt-5">
+  <div class="card-body">
+    <h2 class="card-title">Options and run</h2>
     <form [formGroup]="listForm" novalidate (ngSubmit)="onSubmit()">
-      <div class="flex gap-5">
-        <mat-form-field class="flex-1">
-          <mat-label>Choose one predefined list ID or use your list ID</mat-label>
-          <input type="text" matInput formControlName="listId" [matAutocomplete]="auto" />
-          <mat-autocomplete #auto="matAutocomplete">
-            @for (option of filteredOptions$ | async; track option.id) {
-            <mat-option [value]="option.id">
-              {{ option.title }}
-            </mat-option>
+      <div class="flex gap-4">
+        <label class="form-control flex-1">
+          <div class="label">
+            <span class="label-text">Choose one predefined list ID or use your list ID *</span>
+          </div>
+          <input
+            type="text"
+            class="input input-bordered w-full"
+            list="list-options"
+            formControlName="listId"
+            placeholder="e.g. 13628"
+          />
+          <datalist id="list-options">
+            @for (option of options; track option.id) {
+              <option [value]="option.id">{{ option.title }}</option>
             }
-          </mat-autocomplete>
-        </mat-form-field>
-        <mat-form-field class="flex-1">
-          <mat-label>Language</mat-label>
-          <input type="text" matInput formControlName="language" />
-        </mat-form-field>
+          </datalist>
+        </label>
+        <label class="form-control flex-1">
+          <div class="label">
+            <span class="label-text">Language *</span>
+          </div>
+          <input type="text" class="input input-bordered w-full" formControlName="language" placeholder="e.g. de" />
+        </label>
       </div>
-      <div class="flex">
-        <button class="flex-1" mat-raised-button [disabled]="listForm.invalid">RUN/UPDATE</button>
+      <div class="card-actions mt-4">
+        <button class="btn btn-primary w-full" [disabled]="listForm.invalid">RUN/UPDATE</button>
       </div>
     </form>
-  </mat-card-content>
-</mat-card>
+  </div>
+</div>
 
 @if (loading) {
-<mat-card class="w-7/12 mx-auto">
-  <mat-card-content>
+<div class="card bg-base-100 shadow-md w-7/12 mx-auto mt-5">
+  <div class="card-body">
     @if (list) {
-    <p>
-      List name: {{ list.name }}
-      <br />
-      List description: {{ list.description }}
-    </p>
-    <form [formGroup]="filterForm" fxLayout="column">
-      <div class="flex">
-        <mat-form-field class="flex-1">
-          <mat-label>Filter items</mat-label>
-          <input matInput formControlName="filter" />
-        </mat-form-field>
-      </div>
+    <div class="mb-4">
+      <p><strong>List name:</strong> {{ list.name }}</p>
+      <p><strong>List description:</strong> {{ list.description }}</p>
+    </div>
+    <form [formGroup]="filterForm">
+      <label class="form-control w-full">
+        <div class="label">
+          <span class="label-text">Filter items</span>
+        </div>
+        <input type="text" class="input input-bordered w-full" formControlName="filter" placeholder="Search..." />
+      </label>
     </form>
-    @if (items$ | async; as items) { @if (items.length > 0) {
-    <div>Found {{ items.length }} item(s).</div>
-    <mat-list class="flex-1">
-      @for (item of items; track item) {
-      <mat-list-item lines="70">
-        <mat-icon aria-hidden="false" matListItemIcon>movie</mat-icon>
-        <span matListItemTitle>{{ item.title }}</span>
-        <span [innerHTML]="item.comment"></span>
-      </mat-list-item>
+    @if (items$ | async; as items) {
+      @if (items.length > 0) {
+        <p class="mt-4 text-sm text-base-content/70">Found {{ items.length }} item(s).</p>
+        <ul class="list bg-base-200 rounded-box mt-2">
+          @for (item of items; track item) {
+          <li class="list-row items-center gap-3">
+            <span class="material-icons text-2xl">movie</span>
+            <div class="list-col-grow">
+              <p class="font-medium">{{ item.title }}</p>
+              <p class="text-xs opacity-60" [innerHTML]="item.comment"></p>
+            </div>
+          </li>
+          }
+        </ul>
+      } @else {
+        <p class="mt-4">No entry found.</p>
       }
-    </mat-list>
-    } @else {
-    <p>No entry found.</p>
-    } } } @else {
-    <p>Loading list ...</p>
-    <mat-progress-bar mode="indeterminate" value="50"></mat-progress-bar>
     }
-  </mat-card-content>
-</mat-card>
+    } @else {
+    <p class="mb-2">Loading list ...</p>
+    <progress class="progress progress-primary w-full"></progress>
+    }
+  </div>
+</div>
 }

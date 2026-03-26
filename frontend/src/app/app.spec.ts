@@ -18,16 +18,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as appname 'explore-tmdb'`, () => {
+  it(`should have as appname 'explore TMDb'`, () => {
     const fixture = TestBed.createComponent(App);
     const app = fixture.componentInstance;
-    expect(app.appname).toEqual('explore-tmdb');
+    expect(app.appname).toEqual('explore TMDb');
   });
 
-  it('should render toolbar', async () => {
+  it('should render navbar', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('mat-toolbar')?.textContent).toContain('explore-tmdb');
+    expect(compiled.querySelector('.navbar')?.textContent).toContain('explore TMDb');
   });
 });

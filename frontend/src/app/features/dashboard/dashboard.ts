@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,7 +11,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { EMPTY, Observable, of } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, map, startWith, switchMap } from 'rxjs/operators';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  map,
+  startWith,
+  switchMap,
+} from 'rxjs/operators';
 import { Item } from './item.model';
 import { OPTIONS } from './list.config';
 import { List } from './list.model';
@@ -82,6 +89,8 @@ export class Dashboard implements OnInit {
   }
 
   private itemFilter(term: string): Item[] {
-    return this.list?.items.filter((item) => item.title.toLowerCase().includes(term.toLowerCase())) ?? [];
+    return (
+      this.list?.items.filter((item) => item.title.toLowerCase().includes(term.toLowerCase())) ?? []
+    );
   }
 }

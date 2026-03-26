@@ -1,7 +1,7 @@
 import { Item } from './item.model';
 
-export interface List {
+export type List = {
   name: string;
   description: string;
   items: Item[];
-}
+};

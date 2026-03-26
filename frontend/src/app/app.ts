@@ -1,4 +1,4 @@
-import { Component, DOCUMENT, TemplateRef, inject } from '@angular/core';
+import { Component, DOCUMENT, inject, TemplateRef } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -19,7 +19,7 @@ export class App {
 
   appname: string;
 
-  public constructor() {
+  constructor() {
     this.appname = environment.appname;
     this.#titleService.setTitle(this.appname);
     this.#document.body.classList.add(`${environment.theme}-theme`);

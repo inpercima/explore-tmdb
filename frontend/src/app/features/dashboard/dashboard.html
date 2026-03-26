@@ -52,6 +52,9 @@
       <mat-list-item lines="70">
         <mat-icon aria-hidden="false" matListItemIcon>movie</mat-icon>
         <span matListItemTitle>{{ item.title }}</span>
+        <span aria-label="Original title">{{ item.original_title }}</span>
+        <span aria-label="Release date">{{ item.release_date }}</span>
+        <span aria-label="Cast">{{ item.cast.join(', ') }}</span>
         <span [innerHTML]="item.comment"></span>
       </mat-list-item>
       }

@@ -37,12 +37,36 @@ class ListService {
     foreach($data->results as $key => $value) {
       $mediaType = $value->media_type;
       $title = $mediaType == 'tv' ? $value->name : $value->title;
+      $originalTitle = $mediaType == 'tv' ? $value->original_name : $value->original_title;
+      $releaseDate = $mediaType == 'tv' ? $value->first_air_date : $value->release_date;
       $commentId = "$mediaType:$value->id";
       $comment = $data->comments->$commentId;
       $comment = $comment == null ? '' : $comment;
-      array_push($items, (object) [ 'title' => $title, 'comment' => nl2br($comment) ]);
+      $cast = $this->getCast($value->id, $mediaType);
+      array_push($items, (object) [ 'title' => $title, 'original_title' => $originalTitle, 'release_date' => $releaseDate, 'cast' => $cast, 'comment' => nl2br($comment) ]);
     }
     return $items;
+  }
+
+  /**
+   * Fetches the top 5 main actors for a movie or TV show from the TMDB v3 credits endpoint.
+   */
+  private function getCast($movieId, $mediaType) {
+    $apiKey = Config::API_KEY;
+    $endpoint = $mediaType == 'tv' ? 'tv' : 'movie';
+    $url = "https://api.themoviedb.org/3/$endpoint/$movieId/credits?api_key=$apiKey";
+    $response = @file_get_contents($url);
+    if ($response === false) {
+      return [];
+    }
+    $credits = json_decode($response);
+    if ($credits === null || !isset($credits->cast)) {
+      return [];
+    }
+    $mainActors = array_slice($credits->cast, 0, 5);
+    return array_map(function($actor) {
+      return $actor->name;
+    }, $mainActors);
   }
 }
 ?>

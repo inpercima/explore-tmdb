@@ -8,25 +8,34 @@ class ListService {
   public function __construct() {}
 
   /**
-   * List all title from a public list in themoviedb.
+   * List all items from a public list from themoviedb with their details.
    */
-  public function listAll($listId, $language) {
+  public function getListDetails($listId, $language) {
     $page = 1;
-    $data = $this->request($listId, $language, $page);
+    $data = $this->getList($listId, $language, $page);
     $items = $this->extract($data);
     $totalPages = $data->total_pages;
     for ($i = $page + 1; $i <= $totalPages; $i++) {
-      $items = array_merge($items, $this->extract($this->request($listId, $language, $i)));
+      $items = array_merge($items, $this->extract($this->getList($listId, $language, $i)));
     }
     return json_encode(array("name" => $data->name, "description" => $data->description, "items" => $items));
   }
 
   /**
-   * Executes one or multiple requests to get all items from a public list in themoviedb.
+   * Fetches a public list from themoviedb with the given list ID, language and page number.
    */
-  private function request($listId, $language, $page) {
+  private function getList($listId, $language, $page) {
     $apiKey = Config::API_KEY;
-    return json_decode(file_get_contents("https://api.themoviedb.org/4/list/$listId?api_key=$apiKey&language=$language&page=$page"));
+    $url = "https://api.themoviedb.org/3/list/$listId?api_key=$apiKey&language=$language&page=$page";
+    $response = @file_get_contents($url);
+    if ($response === false) {
+      return (object) [];
+    }
+    $data = json_decode($response);
+    if ($data === null || !isset($data->items)) {
+      return (object) [];
+    }
+    return $data;
   }
 
   /**
@@ -43,7 +52,13 @@ class ListService {
       $comment = $data->comments->$commentId;
       $comment = $comment == null ? '' : $comment;
       $cast = $this->getCast($value->id, $mediaType);
-      array_push($items, (object) [ 'title' => $title, 'original_title' => $originalTitle, 'release_date' => $releaseDate, 'cast' => $cast, 'comment' => nl2br($comment) ]);
+      array_push($items, (object) [
+        'title' => $title,
+        'original_title' => $originalTitle,
+        'release_date' => $releaseDate,
+        'cast' => $cast,
+        'comment' => nl2br($comment)
+      ]);
     }
     return $items;
   }

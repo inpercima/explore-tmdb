@@ -10,5 +10,5 @@ $listId = $coreService->getParam('listId');
 $language = $coreService->getParam('language');
 
 $listService = new ListService();
-echo $listService->listAll($listId, $language);
+echo $listService->getListDetails($listId, $language);
 ?>

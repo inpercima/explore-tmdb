@@ -28,7 +28,7 @@ Is required if started locally and not with Docker.
 
 * `node 24.14.0` or higher in combination with
   * `npm 11.9.0` or higher or
-  * `pnpm 10.32.0` or higher, used in this repository
+  * `pnpm 10.34.5` or higher, used in this repository
 
 ## Getting started
 

@@ -39,7 +39,7 @@
                   "**/config.dev.php",
                   "**/README.md"
                 ],
-                "input": "../api/",
+                "input": "./api/",
                 "output": "/api/"
               }
             ],
